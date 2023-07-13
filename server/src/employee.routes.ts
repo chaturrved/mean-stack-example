@@ -21,7 +21,7 @@ employeeRouter.get('/:id',async (req, res)=>{
     try {
         const id = req?.params?.id;
         const query = { _id: new mongodb.ObjectId(id)};
-        const employee = collections.employees.findOne(query);
+        const employee = await collections.employees.findOne(query);
 
         if(employee){
             res.status(200).send(employee);
